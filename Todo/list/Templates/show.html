@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show</title>
+    <link rel="stylesheet" href="{% static 'show.css' %}">
+</head>
+<body>
+    {{msg}}
+    <h2 id="head">Show all data</h2>
+    <div id="back">
+        <form action="/">
+            <input type="submit" value=">> Back">
+        </form>
+    </div>
+    <div class="container">
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Tasks</th>
+                <th>Status</th>
+            </thead>
+
+            {% for d in data %}
+                <tr>
+                    <td>{{d.ID}}</td>
+                    <td>{{d.Task}}</td>
+                    <td>
+                        <a href="/edit?id={{d.ID}}">Edit</a>
+                        <a href="/delete?id={{d.ID}}">Completed</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
